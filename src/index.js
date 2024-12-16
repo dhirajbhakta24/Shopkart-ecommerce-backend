@@ -1,12 +1,15 @@
 const express = require('express');
-const {PORT} = require('./config/server.config');
+
+const { PORT } = require('./config/serverConfig');
+
+const { configPingRoutes } = require('./routes/v1/PingRouter');
+const ApiRouter = require('./routes/apiRouter');
+
+
 const app = express();
-const apiRouter = require('./routes/api_router');
 
+app.use('/api', ApiRouter); // if any req comes with url starting with /api
 
-app.use('/api', apiRouter); // if any req comes with url starting with /api
-
-
-app.listen(PORT,()=>{
-    console.log(`server started at port ${PORT}`);
-});
+app.listen(PORT, () => {
+    console.log(`Server for Shopcart is Up ${PORT}`);
+})
