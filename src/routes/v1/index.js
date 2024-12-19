@@ -9,7 +9,7 @@ const productsRouter = require('./ProductRouter');
 // a V1 api
 
 v1Router.use('/ping', pingRouter)
-v1Router.use('/products', productsRouter)
+v1Router.use('/products',  productsRouter)
 
 
 module.exports = v1Router;
