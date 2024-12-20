@@ -1,19 +1,63 @@
+const {StatusCodes , ReasonPhrases} = require('http-status-codes');
+
+const productService = require('../services/product.service');
+
+
 function createProduct(req,res){
     try {
-        //some db processing
-        return res.json({
-            
+        
+        const response = productService.createProduct(req.body);
+
+        return res
+        
+        .status(StatusCodes.CREATED)
+        .json({
             success : true,
             error:{},
             message : "successfully created a product",
-            data : {
-                id : Math.random() * (20),
-                title :      req.body.title,
-                description: req.body.description,
-                category:    req.body.description,
-                price :      req.body.price,
-                image :      req.body.image
-            }
+            data : response
+                
+            
+        });    
+    } catch (error) {
+        console.log("Something went wrong",error);
+    }
+}
+function getProducts(req,res){
+    try {
+        
+        const response = productService.getProducts(req.body);
+
+        return res
+        
+        .status(StatusCodes.OK)
+        .json({
+            success : true,
+            error:{},
+            message : "successfully fetched the products",
+            data : response
+                
+            
+        });    
+    } catch (error) {
+        console.log("Something went wrong",error);
+    }
+}
+function getProduct(req,res){
+    try {
+        
+        const response = productService.getProduct(req.body);
+
+        return res
+        
+        .status(StatusCodes.OK)
+        .json({
+            success : true,
+            error:{},
+            message : "successfully fetched a product",
+            data : response
+                
+            
         });    
     } catch (error) {
         console.log("Something went wrong",error);
@@ -21,5 +65,7 @@ function createProduct(req,res){
 }
 
 module.exports={
-    createProduct
+    createProduct,
+    getProducts,
+    getProduct
 }
