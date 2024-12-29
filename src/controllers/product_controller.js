@@ -2,6 +2,7 @@ const { StatusCodes, ReasonPhrases } = require('http-status-codes');
 
 const ProductService = require('../services/product_service');
 const FakeStoreRepository = require('../repositories/fake_store_repository');
+
 const productService = new ProductService(new FakeStoreRepository());
 
 function createProduct(req, res) {
@@ -42,9 +43,9 @@ async function getProducts(req, res) {
 }
 
 
-function getProduct(req, res) { // /api/v1/products/2
+async function getProduct(req, res) { // /api/v1/products/2
     try {
-        const response = ProductService.getProduct(req.params.id);
+        const response = await productService.getProduct(req.params.id);
         return res
                 .status(StatusCodes.OK)
                 .json({
@@ -57,6 +58,8 @@ function getProduct(req, res) { // /api/v1/products/2
         console.log("Something went wrong", error);
     }
 }
+
+
 
 module.exports = {
     createProduct,

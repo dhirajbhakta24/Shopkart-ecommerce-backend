@@ -1,5 +1,5 @@
 const { StatusCodes } = require('http-status-codes');
-const BadRequest = require('../errors/badRequest.error');
+const BadRequest = require('../errors/bad_request_error');
 const errorResponse = require('../utils/error.response');
 
 function createProductValidator(req, res, next) {

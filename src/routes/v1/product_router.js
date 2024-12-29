@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { createProduct, getProducts, getProduct } = require('../../controllers/product_controller');
-const { createProductValidator } = require('../../middlewares/product_middlewares');
+const createProductValidator = require('../../middlewares/product_middleware');
 
 const productRouter = express.Router();
 

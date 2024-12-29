@@ -1,5 +1,4 @@
 const products = [];
-
 class ProductService {
 
     constructor(respository) {
@@ -14,16 +13,19 @@ class ProductService {
         products.push(newProduct);
         return newProduct;
     }
-    
+
     async getProducts() {
         const response = await this.respository.getProducts();
-        return response.data;
+        return response;
     }
-    
-    getProduct(id) {
-        return products.filter(product => product.id == id)[0];
+
+    async getProduct(id) {
+        const response = await this.respository.getProduct(id);
+        return response;
     }
 }
+
+
 
 
 module.exports = ProductService
