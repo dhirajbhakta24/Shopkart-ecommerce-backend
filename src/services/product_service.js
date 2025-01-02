@@ -1,4 +1,5 @@
 const products = [];
+
 class ProductService {
 
     constructor(respository) {
@@ -24,8 +25,6 @@ class ProductService {
         return response;
     }
 }
-
-
 
 
 module.exports = ProductService

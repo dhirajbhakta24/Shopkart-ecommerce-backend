@@ -60,7 +60,6 @@ async function getProduct(req, res) { // /api/v1/products/2
 }
 
 
-
 module.exports = {
     createProduct,
     getProducts,
